@@ -9,14 +9,13 @@ import "@openzeppelin/contracts/access/Ownable.sol";
  * @title Contract of the ETHSeoul2024 Hackathon
  * @author @cosmodude
  * @notice ERC20 token 
- * @dev Transfers enabled only from owner address
  */
 contract TuneToken is ERC20, Ownable, ERC20Permit{
     constructor(address _owner) ERC20("TuneToken", "TUNE") Ownable(_owner) ERC20Permit("GuildXp"){}
     
     // set decimals to 2
     function decimals() public view virtual override returns (uint8) {
-        return 2;
+        return 18;
     }
 
     /**
