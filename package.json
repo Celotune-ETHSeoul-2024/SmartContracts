@@ -3,5 +3,8 @@
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^3.0.0",
     "hardhat": "^2.22.2"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.2"
   }
 }
