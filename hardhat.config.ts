@@ -8,6 +8,7 @@ const env = load({
     INFURA_SECRET_KEY: String,
     DEV_WALLET_PRIVATE_KEY: String,
     ETHERSCAN_API_KEY: String,
+    CELOSCAN_API_KEY: String,
 });
 
 // To enable forking, turn one of these booleans on, and then run your tasks/scripts using ``--network hardhat``
@@ -70,13 +71,18 @@ const config: HardhatUserConfig = {
             chainId: 80085,
             gasPrice: 45000000000,
         },
-        
-        katana: {
-            url: "https://rpc.zkatana.gelato.digital",
-            accounts: [env.DEV_WALLET_PRIVATE_KEY],
-            chainId: 1261120,
-            gasPrice: 70000000000,
+        alfajores: {
+          url: "https://alfajores-forno.celo-testnet.org",
+          accounts: [env.DEV_WALLET_PRIVATE_KEY],
+          chainId: 44787,
+          gasPrice: 80000000000,
         },
+        // katana: {
+        //     url: "https://rpc.zkatana.gelato.digital",
+        //     accounts: [env.DEV_WALLET_PRIVATE_KEY],
+        //     chainId: 1261120,
+        //     gasPrice: 70000000000,
+        // },
         hardhat: {
             gasPrice: 225000000000,
             chainId: !forkingData ? 43112 : undefined, //Only specify a chainId if we are not forking
@@ -96,8 +102,9 @@ const config: HardhatUserConfig = {
             spicy: env.ETHERSCAN_API_KEY,
             snowtrace: "snowtrace",
             fuji: "snowtrace",
+            katana: "katana",
+            alfajores: env.CELOSCAN_API_KEY
         },
-
         customChains: [
             {
                 network: "spicy",
@@ -115,6 +122,22 @@ const config: HardhatUserConfig = {
                     browserURL: "https://avalanche.testnet.routescan.io",
                 },
             },
+            // {
+            //   network: "katana",
+            //   chainId: 1261120,
+            //   urls: {
+            //     apiURL: "https://zkatana.blockscout.com/api",
+            //     browserURL: "https://zkatana.blockscout.com"
+            //   }
+            // }
+            {
+                network: "alfajores",
+                chainId: 44787,
+                urls: {
+                  apiURL: "https://api-alfajores.celoscan.io/api",
+                  browserURL: "https://alfajores.celoscan.io/"
+                }
+            }
         ],
     },
 };
