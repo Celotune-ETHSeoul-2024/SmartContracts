@@ -11,7 +11,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
  * @notice ERC20 token 
  */
 contract TuneToken is ERC20, Ownable, ERC20Permit{
-    constructor(address _owner) ERC20("TuneToken", "TUNE") Ownable(_owner) ERC20Permit("GuildXp"){}
+    constructor(address _owner) ERC20("TuneToken", "TUNE") Ownable(_owner) ERC20Permit("TuneToken"){}
     
     // set decimals to 2
     function decimals() public view virtual override returns (uint8) {
@@ -23,7 +23,7 @@ contract TuneToken is ERC20, Ownable, ERC20Permit{
      * @param to The address of the recipient
      * @param amount Amount of tokens (with 2 decimals)
      */
-    function mint(address to, uint256 amount) external onlyOwner {
+    function mint(address to, uint256 amount) external  {
         _mint(to, amount);
     }
 }
